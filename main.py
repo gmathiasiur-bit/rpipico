@@ -17,17 +17,18 @@ async def boton():
 
 async def heartbeat():
     while True:
-        await asyncio.sleep_ms(500)
+        await asyncio.sleep_ms(250)
         led_rojo.toggle()
 
 async def main():
+    asyncio.create_task(boton())
+    asyncio.create_task(heartbeat())
     n = 0
     while True:
         print(n)
         n += 1
         await asyncio.sleep(1)
 
-asyncio.create_task(boton())
-asyncio.create_task(heartbeat())
+
 asyncio.run(main())  # Run main application code
  
